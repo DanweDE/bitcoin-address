@@ -1,14 +1,14 @@
 {
-	"name": "bitcoin/bitcoin-address",
+	"name": "danwe/bitcoin-address",
 	"type": "library",
-	"description": "Simple BitcoinAddress class for value objects representing bitcoin addresses.",
+	"description": "Simple PHP Danwe\\Bitcoin\\Address class for value objects representing bitcoin addresses.",
 	"keywords": [
 		"bitcoin",
 		"btc",
 		"address",
 		"cryptocurrency"
 	],
-	"homepage": "https://github.com/danweetz/bitcoin-address",
+	"homepage": "https://github.com/DanweDE/php-bitcoin-address",
 	"license": "GPL-2.0+",
 	"authors": [
 		{

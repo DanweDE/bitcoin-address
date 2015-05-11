@@ -13,13 +13,13 @@ addresses.
 this package as well as its dependencies.
 
 To add this package as a local, per-project dependency to your project, simply add a
-dependency on `DanweDE/bitcoin-address` to your project's `composer.json` file.
+dependency on `danwe/bitcoin-address` to your project's `composer.json` file.
 Here is a minimal example of a `composer.json` file that just defines a dependency on
 bitcoin-address 1.0.x:
 
     {
         "require": {
-            "DanweDE/bitcoin-address": "~1.0.0"
+            "danwe/bitcoin-address": "~1.0.0"
         }
     }
 
@@ -47,4 +47,4 @@ bitcoin-address has been written by [Daniel A. R. Werner](https://www.mediawiki.
 
 ## Links
 
-* [bitcoin-address on Packagist](https://packagist.org/packages/DanweDE/bitcoin-address)
+* [bitcoin-address on Packagist](https://packagist.org/packages/danwe/bitcoin-address)
