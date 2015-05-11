@@ -38,6 +38,19 @@ class Address {
 	}
 
 	/**
+	 * Returns whether the address is equal to another given address.
+	 *
+	 * @return bool
+	 */
+	function equals( $other ) {
+		if( ! ( $other instanceof Address ) ) {
+			return false;
+		}
+		return $this === $other
+			|| $this->asString() === $other->asString();
+	}
+
+	/**
 	 * Returns a string representation of the address. Basically the same string given to the
 	 * constructor.
 	 *

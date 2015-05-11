@@ -39,6 +39,62 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * @dataProvider validAddressesProvider
+	 * @depends testConstruction
+	 */
+	public function testEqualsWithSameAddress( $address ) {
+		$this->assertTrue( $address->equals( $address ), 'Address instance equal to itself.' );
+	}
+
+	/**
+	 * @dataProvider validAddressesProvider
+	 * @depends testConstruction
+	 */
+	public function testEqualsWithEqualAddress( $address, $addressString ) {
+		$equalAddress = new Address( $addressString );
+
+		$address->equals( $equalAddress );
+		$equalAddress->equals( $address );
+	}
+
+	/**
+	 * @dataProvider validAddressesProvider
+	 * @depends testConstruction
+	 */
+	public function testEqualsWithUnequalAddresses( $address, $addressString ) {
+		foreach( $this->validAddressesProvider() as $case ) {
+			$caseAddress = $case[ 0 ];
+			$caseAddressString = $case[ 1 ];
+
+			if( $caseAddressString === $addressString ) {
+				continue;
+			}
+			$this->assertFalse( $address->equals( $caseAddress ), 'Address A not equal B.' );
+			$this->assertFalse( $caseAddress->equals( $address ), 'Address B not equal A.' );
+		}
+	}
+
+	/**
+	 * @dataProvider otherValuesProvider
+	 * @depends testConstruction
+	 */
+	public function testEqualsWithOtherValues( $value ) {
+		foreach( $this->validAddressesProvider() as $case ) {
+			$address = $case[ 0 ];
+			$this->assertFalse( $address->equals( $value ), 'Address not equal value of type ' . gettype( $value ) );
+		}
+	}
+
+	/**
+	 * @return array
+	 */
+	public function otherValuesProvider() {
+		return array_chunk ( [
+			'foo', 42, null, false, true, array()
+		], 1 );
+	}
+
+	/**
 	 * @return array( array( Address $address, string $addressString ), ... )
 	 */
 	public function validAddressesProvider() {
