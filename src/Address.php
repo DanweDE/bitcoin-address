@@ -36,4 +36,14 @@ class Address {
 
 		$this->addressString = $addressString;
 	}
+
+	/**
+	 * Returns a string representation of the address. Basically the same string given to the
+	 * constructor.
+	 *
+	 * @return string
+	 */
+	public function asString() {
+		return $this->addressString;
+	}
 }

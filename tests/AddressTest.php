@@ -31,6 +31,14 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * @dataProvider validAddressesProvider
+	 * @depends testConstruction
+	 */
+	public function testAsString( $address, $addressString ) {
+		$this->assertEquals( $address->asString(), $addressString );
+	}
+
+	/**
 	 * @return array( array( Address $address, string $addressString ), ... )
 	 */
 	public function validAddressesProvider() {
