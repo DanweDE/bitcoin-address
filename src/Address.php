@@ -2,6 +2,7 @@
 namespace Danwe\Bitcoin;
 
 use LinusU\Bitcoin\AddressValidator;
+use InvalidArgumentException;
 
 /**
  * For instantiating value objects representing a (compressed) bitcoin addresses.
@@ -22,7 +23,7 @@ class Address {
 	/**
 	 * @param string $addressString The address's string representation.
 	 *
-	 * @throws \Exception If $addressString is not a valid bitcoin address.
+	 * @throws InvalidArgumentException If $addressString is not a valid bitcoin address.
 	 */
 	function __construct( $addressString ) {
 		if( is_null( self::$addressValidator ) ) {
@@ -31,7 +32,7 @@ class Address {
 		$isValid = self::$addressValidator->isValid( $addressString, AddressValidator::MAINNET );
 
 		if( !$isValid ) {
-			throw new \Exception( 'Given string is not a bitcoin address.' );
+			throw new InvalidArgumentException( 'given string is not a bitcoin address' );
 		}
 
 		$this->addressString = $addressString;

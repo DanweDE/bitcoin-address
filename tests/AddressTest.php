@@ -24,7 +24,8 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider invalidAddressesProvider
 	 *
-	 * @expectedException \Exception
+	 * @expectedException \InvalidArgumentException
+	 * @expectedExceptionText given string is not a bitcoin address
 	 */
 	public function testConstructionWithInvalidAddressString( $invalidAddressString ) {
 		new Address( $invalidAddressString );
