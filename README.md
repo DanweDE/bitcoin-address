@@ -32,8 +32,7 @@ All classes are located in the ParserHooks namespace, which is PSR-4 mapped onto
 ## Tests
 
 This library comes with a set up PHPUnit test suite. After installation via composer, tests can be
-run by running
-    php <project-dir>/vendor/bin/phpunit
+run by running `php <project-dir>/vendor/bin/phpunit`
 
 ## Authors
 
