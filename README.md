@@ -3,6 +3,12 @@
 Introduces a simple class Danwe\Bitcoin\Address for immutable value objects representing bitcoin
 addresses.
 
+[![Latest Stable Version](https://poser.pugx.org/danwe/bitcoin-address/version.png)](https://packagist.org/packages/danwe/bitcoin-address)
+[![Build Status](https://travis-ci.org/DanweDE/php-bitcoin-address.svg?branch=master)](https://travis-ci.org/DanweDE/php-bitcoin-address)
+[![Coverage Status](https://coveralls.io/repos/DanweDE/php-bitcoin-address/badge.svg?branch=master)](https://coveralls.io/r/DanweDE/php-bitcoin-address?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/5551e50406c3183941000074/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5551e50406c3183941000074)
+[![Download count](https://poser.pugx.org/danwe/bitcoin-address/d/total.png)](https://packagist.org/packages/danwe/bitcoin-address)
+
 ## Requirements
 
 * PHP 5.4 or later
