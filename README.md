@@ -44,6 +44,10 @@ bitcoin-address has been written by [Daniel A. R. Werner](https://www.mediawiki.
 
 * Upcoming, initial release.
 
+### TODOs:
+
+* Support for testnet addresses, either in this or in a separate package.
+
 ## Links
 
 * [bitcoin-address on Packagist](https://packagist.org/packages/danwe/bitcoin-address)
