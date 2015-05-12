@@ -8,7 +8,7 @@ php:
 install:
   - travis_retry composer install --no-dev
 
-script:2
+script:
   - phpunit --coverage-clover build/logs/clover.xml
 
 after_script:
