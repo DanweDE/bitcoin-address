@@ -6,9 +6,9 @@ php:
   - hhvm
 
 install:
-  - travis_retry composer install --no-de
+  - travis_retry composer install --no-dev
 
-script:
+script:2
   - phpunit --coverage-clover build/logs/clover.xml
 
 after_script:
