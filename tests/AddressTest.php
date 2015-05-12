@@ -14,15 +14,15 @@ use \Danwe\Bitcoin\Address;
 class AddressTest extends \PHPUnit_Framework_TestCase {
 
 	/**
-	 * @dataProvider validAddressesProvider
+	 * @dataProvider validAddressStringsProvider
 	 */
-	public function testConstruction( $address, $addressString ) {
-		$this->assertInstanceOf( 'Danwe\\Bitcoin\\Address', $address,
+	public function testConstruction( $addressString ) {
+		$this->assertInstanceOf( 'Danwe\\Bitcoin\\Address', new Address( $addressString ),
 			$addressString . ' is being recognized as a valid address.' );
 	}
 
 	/**
-	 * @dataProvider invalidAddressesProvider
+	 * @dataProvider invalidAddressStringsProvider
 	 *
 	 * @expectedException \InvalidArgumentException
 	 * @expectedExceptionText given string is not a bitcoin address
@@ -100,27 +100,35 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function validAddressesProvider() {
 		return array_map(
-			function( $addressString ) {
+			function( $value ) {
+				$addressString = $value[ 0 ];
 				return [
 					new Address( $addressString ),
 					$addressString
 				];
-			}, [
-				'1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i',
-				'1Ax4gZtb7gAit2TivwejZHYtNNLT18PUXJ',
-				'1C5bSj1iEGUgSTbziymG7Cn18ENQuT36vv',
-				'1Gqk4Tv79P91Cc1STQtU3s1W6277M2CVWu',
-				'1JwMWBVLtiqtscbaRHai4pqHokhFCbtoB4',
-				'19dcawoKcZdQz365WpXWMhX6QCUpR9SY4r',
-				'13p1ijLwsnrcuyqcTvJXkq2ASdXqcnEBLE'
-			]
+			}, $this->validAddressStringsProvider()
 		);
 	}
 
 	/**
  	 * @return array( array( string $addressString ), ... )
 	 */
-	public function invalidAddressesProvider() {
+	public function validAddressStringsProvider() {
+		return array_chunk ( [
+			'1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i',
+			'1Ax4gZtb7gAit2TivwejZHYtNNLT18PUXJ',
+			'1C5bSj1iEGUgSTbziymG7Cn18ENQuT36vv',
+			'1Gqk4Tv79P91Cc1STQtU3s1W6277M2CVWu',
+			'1JwMWBVLtiqtscbaRHai4pqHokhFCbtoB4',
+			'19dcawoKcZdQz365WpXWMhX6QCUpR9SY4r',
+			'13p1ijLwsnrcuyqcTvJXkq2ASdXqcnEBLE'
+		], 1 );
+	}
+
+	/**
+ 	 * @return array( array( string $addressString ), ... )
+	 */
+	public function invalidAddressStringsProvider() {
 		return array_chunk ( [
 			'',
 			'42',
