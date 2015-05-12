@@ -90,9 +90,9 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	 * @return array
 	 */
 	public function otherValuesProvider() {
-		return array_chunk ( array(
+		return array_chunk ( [
 			'foo', 42, null, false, true, array()
-		), 1 );
+		], 1 );
 	}
 
 	/**
@@ -101,11 +101,11 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	public function validAddressesProvider() {
 		return array_map(
 			function( $addressString ) {
-				return array(
+				return [
 					new Address( $addressString ),
 					$addressString
-				);
-			}, array(
+				];
+			}, [
 				'1AGNa15ZQXAZUgFiqJ2i7Z2DPU2J6hW62i',
 				'1Ax4gZtb7gAit2TivwejZHYtNNLT18PUXJ',
 				'1C5bSj1iEGUgSTbziymG7Cn18ENQuT36vv',
@@ -113,7 +113,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 				'1JwMWBVLtiqtscbaRHai4pqHokhFCbtoB4',
 				'19dcawoKcZdQz365WpXWMhX6QCUpR9SY4r',
 				'13p1ijLwsnrcuyqcTvJXkq2ASdXqcnEBLE'
-			)
+			]
 		);
 	}
 
@@ -121,7 +121,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
  	 * @return array( array( string $addressString ), ... )
 	 */
 	public function invalidAddressesProvider() {
-		return array_chunk ( array(
+		return array_chunk ( [
 			'',
 			'42',
 			'foo',
@@ -174,7 +174,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 			'ntEtnnGhqPii4joABvBtSEJG6BxjT2tUZqE8PcVYgk3RHpgxgHDCQxNbLJf7ardf1dDk2oCQ7Cf',
 			'Ky1YjoZNgQ196HJV3HpdkecfhRBmRZdMJk89Hi5KGfpfPwS2bUbfd',
 			'2A1q1YsMZowabbvta7kTy2Fd6qN4r5ZCeG3qLpvZBMzCixMUdkN2Y4dHB1wPsZAeVXUGD83MfRED'
-		), 1 );
+		], 1 );
 	}
 
 

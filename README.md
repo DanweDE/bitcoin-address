@@ -5,7 +5,7 @@ addresses.
 
 ## Requirements
 
-* PHP 5.3 or later
+* PHP 5.4 or later
 
 ## Installation
 
