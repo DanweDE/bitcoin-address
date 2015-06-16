@@ -9,7 +9,7 @@
 		"cryptocurrency"
 	],
 	"homepage": "https://github.com/DanweDE/php-bitcoin-address",
-	"license": "GPL-2.0+",
+	"license": "MIT License",
 	"authors": [
 		{
 			"name": "Daniel A. R. Werner",
