@@ -33,7 +33,7 @@ bitcoin-address 1.0.x:
 
 ### Library Structure
 
-All classes are located in the ParserHooks namespace, which is PSR-4 mapped onto the src/ directory.
+All classes are located in the ParserHooks namespace, which is PSR-4 mapped onto the `src/` directory.
 
 ## Tests
 
