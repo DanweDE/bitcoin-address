@@ -2,11 +2,13 @@
 
 namespace Danwe\Bitcoin\Tests;
 
-use \Danwe\Bitcoin\Address;
+use Danwe\Bitcoin\Address;
 
 /**
  * @since 1.0.0
  * @author Daniel A. R. Werner
+ *
+ * @covers Danwe\Bitcoin\Address
  *
  * Data from the official bitcoin client:
  * https://github.com/bitcoin/bitcoin/tree/master/src/test/data
@@ -32,34 +34,38 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @dataProvider validAddressesProvider
+	 * @dataProvider validAddressStringsProvider
 	 * @depends testConstruction
 	 */
-	public function testAsString( Address $address, $addressString ) {
+	public function testAsString( $addressString ) {
+		$address = new Address( $addressString );
 		$this->assertEquals( $address->asString(), $addressString );
 	}
 
 	/**
-	 * @dataProvider validAddressesProvider
+	 * @dataProvider validAddressStringsProvider
 	 * @depends testConstruction
 	 */
-	public function testCastToString( Address $address, $addressString ) {
+	public function testCastToString( $addressString ) {
+		$address = new Address( $addressString );
 		$this->assertEquals( (string)$address, $addressString );
 	}
 
 	/**
-	 * @dataProvider validAddressesProvider
+	 * @dataProvider validAddressStringsProvider
 	 * @depends testConstruction
 	 */
-	public function testEqualsWithSameAddress( Address $address ) {
+	public function testEqualsWithSameInstance( $addressString ) {
+		$address = new Address( $addressString );
 		$this->assertTrue( $address->equals( $address ), 'Address instance equal to itself.' );
 	}
 
 	/**
-	 * @dataProvider validAddressesProvider
+	 * @dataProvider validAddressStringsProvider
 	 * @depends testConstruction
 	 */
-	public function testEqualsWithEqualAddress( Address $address, $addressString ) {
+	public function testEqualsWithEqualAddress( $addressString ) {
+		$address = new Address( $addressString );
 		$equalAddress = new Address( $addressString );
 
 		$address->equals( $equalAddress );
@@ -67,17 +73,20 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @dataProvider validAddressesProvider
+	 * @dataProvider validAddressStringsProvider
 	 * @depends testConstruction
 	 */
-	public function testEqualsWithUnequalAddresses( Address $address, $addressString ) {
-		foreach( $this->validAddressesProvider() as $case ) {
-			$caseAddress = $case[ 0 ];
-			$caseAddressString = $case[ 1 ];
+	public function testEqualsWithUnequalAddresses( $addressString ) {
+		$address = new Address( $addressString );
+
+		foreach( $this->validAddressStringsProvider() as $case ) {
+			$caseAddressString = $case[ 0 ];
 
 			if( $caseAddressString === $addressString ) {
 				continue;
 			}
+			$caseAddress = new Address( $caseAddressString );
+
 			$this->assertFalse( $address->equals( $caseAddress ), 'Address A not equal B.' );
 			$this->assertFalse( $caseAddress->equals( $address ), 'Address B not equal A.' );
 		}
@@ -88,8 +97,8 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	 * @depends testConstruction
 	 */
 	public function testEqualsWithOtherValues( $value ) {
-		foreach( $this->validAddressesProvider() as $case ) {
-			$address = $case[ 0 ];
+		foreach( $this->validAddressStringsProvider() as $case ) {
+			$address = new Address( $case[ 0 ] );
 			$this->assertFalse( $address->equals( $value ), 'Address not equal value of type ' . gettype( $value ) );
 		}
 	}
@@ -101,21 +110,6 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 		return array_chunk ( [
 			'foo', 42, null, false, true, array()
 		], 1 );
-	}
-
-	/**
-	 * @return array( array( Address $address, string $addressString ), ... )
-	 */
-	public function validAddressesProvider() {
-		return array_map(
-			function( $value ) {
-				$addressString = $value[ 0 ];
-				return [
-					new Address( $addressString ),
-					$addressString
-				];
-			}, $this->validAddressStringsProvider()
-		);
 	}
 
 	/**
