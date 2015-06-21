@@ -35,7 +35,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider validAddressesProvider
 	 * @depends testConstruction
 	 */
-	public function testAsString( $address, $addressString ) {
+	public function testAsString( Address $address, $addressString ) {
 		$this->assertEquals( $address->asString(), $addressString );
 	}
 
@@ -43,7 +43,15 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider validAddressesProvider
 	 * @depends testConstruction
 	 */
-	public function testEqualsWithSameAddress( $address ) {
+	public function testCastToString( Address $address, $addressString ) {
+		$this->assertEquals( (string)$address, $addressString );
+	}
+
+	/**
+	 * @dataProvider validAddressesProvider
+	 * @depends testConstruction
+	 */
+	public function testEqualsWithSameAddress( Address $address ) {
 		$this->assertTrue( $address->equals( $address ), 'Address instance equal to itself.' );
 	}
 
@@ -51,7 +59,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider validAddressesProvider
 	 * @depends testConstruction
 	 */
-	public function testEqualsWithEqualAddress( $address, $addressString ) {
+	public function testEqualsWithEqualAddress( Address $address, $addressString ) {
 		$equalAddress = new Address( $addressString );
 
 		$address->equals( $equalAddress );
@@ -62,7 +70,7 @@ class AddressTest extends \PHPUnit_Framework_TestCase {
 	 * @dataProvider validAddressesProvider
 	 * @depends testConstruction
 	 */
-	public function testEqualsWithUnequalAddresses( $address, $addressString ) {
+	public function testEqualsWithUnequalAddresses( Address $address, $addressString ) {
 		foreach( $this->validAddressesProvider() as $case ) {
 			$caseAddress = $case[ 0 ];
 			$caseAddressString = $case[ 1 ];

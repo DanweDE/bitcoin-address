@@ -58,6 +58,10 @@ class Address {
 	 * @return string
 	 */
 	public function asString() {
+		return $this->__toString();
+	}
+
+	public function __toString() {
 		return $this->addressString;
 	}
 }
