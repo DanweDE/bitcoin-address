@@ -46,9 +46,9 @@ bitcoin-address has been written by [Daniel A. R. Werner](https://www.mediawiki.
 
 ## Release notes
 
-### 1.0.0 alpha
+### 1.0.0
 
-* Upcoming, initial release.
+* Initial release.
 
 ### TODOs:
 
